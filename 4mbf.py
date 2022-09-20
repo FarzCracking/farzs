@@ -226,11 +226,11 @@ def menu(my_name,my_id):
 	print(x+'['+h+'•'+x+'] ACTIVE USER : '+str(my_name))
 	print(x+'['+h+'•'+x+'] USER ID     : '+str(my_id))
 	print(x+'['+h+'•'+x+'] IP ADDRESS  : '+str(sh['origin']))
-	io = '''[bold cyan][01] Crack Publik	     [05] CRACK FROM FILES
-                                     [06] Check Opsi CP
-[02] Crack Pengikut		     [07] Check Hasil Crack
-[03] Crack Like Post	             [08] Crack Tips
-[04] Crack Gruop                  [00] LOGOUT[bold cyan]'''
+	io = '''[bold cyan][01] Crack Publik	              [05] CRACK FROM FILES	                             
+[02] Crack Pengikut		     [06] Check Opsi CP
+[03] Crack Like Post	             [07] Check Hasil Crack
+[04] Crack Gruop                     [08] Crack Tips
+[05] CRACK FROM FILES                [00] LOGOUT[bold cyan]'''
 	oi = nel(io, style='cyan')
 	cetak(nel(oi, title='[bold cyan] • MENU CRACK • [/bold cyan]'))
 	ec = input(x+'['+p+'<>'+x+'] Pilih : ')
