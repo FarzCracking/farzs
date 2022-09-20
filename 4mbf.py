@@ -226,8 +226,8 @@ def menu(my_name,my_id):
 	print(x+'['+h+'•'+x+'] ACTIVE USER : '+str(my_name))
 	print(x+'['+h+'•'+x+'] USER ID     : '+str(my_id))
 	print(x+'['+h+'•'+x+'] IP ADDRESS  : '+str(sh['origin']))
-	io = '''[bold cyan][01] PUBLIC FRIENDS	     [06] CRACK FROM FILES
-[02] PUBLIC FRIENDS (BULK)   [07] CHECK CHECKPOINT OPTIONS
+	io = '''[bold cyan][01] Crack Publik	     [06] CRACK FROM FILES
+   [07] CHECK CHECKPOINT OPTIONS
 [03] FOLLOWER		     [08] CHECK CRACK RESULTS
 [04] LIKES THE POST	     [09] TIPS CRACK
 [05] GROUP MEMBERS           [00] LOGOUT[bold cyan]'''
