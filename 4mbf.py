@@ -12,34 +12,56 @@ except ImportError:
 		import rich
 	except ImportError:
 		exit('Cannot Install Rich Module, Try Manual Install (pip install rich)')
+#-----------------[ IMPORT-MODULE ]-------------------
+import requests,bs4,json,os,sys,random,datetime,time,re
+import urllib3,rich,base64
 from rich.table import Table as me
 from rich.console import Console as sol
 from bs4 import BeautifulSoup as sop
+from bs4 import BeautifulSoup as parser
 from concurrent.futures import ThreadPoolExecutor as tred
 from rich.console import Group as gp
 from rich.panel import Panel as nel
-import base64
-exec(base64.b64decode(b'ZnJvbSByaWNoIGltcG9ydCBwcmludCBhcyBjZXRhaw=='))
+from rich import print as cetak
 from rich.markdown import Markdown as mark
 from rich.columns import Columns as col
+from rich import print as rprint
 from rich import pretty
 from rich.text import Text as tekz
+try:
+        import rich
+except ImportError:
+        cetak(nel('\t• Sedang Menginstall Modul Rich •'))
+        os.system('pip install rich')
+try:
+        import stdiomask
+except ImportError:
+        cetak(nel('\t• Sedang Menginstall Modul Stdiomask •'))
+        os.system('pip install stdiomask')
+try:
+	import requests
+except ImportError:
+	cetak(nel('\t• Sedang Menginstall Modul Requests •'))
+	os.system('pip install requests && pip install mechanize ')
+#------------------[ USER-AGENT ]-------------------#
 pretty.install()
 CON=sol()
-# UA LIST
 ugen2=[]
 ugen=[]
 cokbrut=[]
 ses=requests.Session()
 princp=[]
-
 try:
 	prox= requests.get('https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks4&timeout=100000&country=all&ssl=all&anonymity=all').text
 	open('.prox.txt','w').write(prox)
 except Exception as e:
-	print('GAGAL')
+	print('[[\x1b[1;92m•\x1b[1;97m] [\x1b[1;96mAlvino_adijaya_xy')
 prox=open('.prox.txt','r').read().splitlines()
-#os.system('rm -rf .prox.txt')
+def jalan(z):
+	for e in z + "\n":
+		sys.stdout.write(e)
+		sys.stdout.flush()
+		time.sleep(0.03)
 
 for xd in range(10000):
 	a='Mozilla/5.0 (Symbian/3; Series60/'
@@ -71,7 +93,6 @@ for xd in range(10000):
 	l='Mobile Safari/537.36'
 	uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
 	ugen.append(uaku2)
-
 for x in range(10):
 	a='Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S'
 	b=random.randrange(100, 9999)
@@ -86,8 +107,6 @@ for x in range(10):
 	k=random.randrange(1, 9)
 	l='Mobile WVGA SMM-MMS/1.2.0 OPN-B'
 	uak=f'{a}{b}/{c}{d}{e}{f}{g}{h}{i}{j}.{k} {l}'
-#	ugen.append(uak)
-
 def uaku():
 	try:
 		ua=open('bbnew.txt','r').read().splitlines()
@@ -100,20 +119,23 @@ def uaku():
 		for un in aa:
 			ua.write(un+'\n')
 		ua=open('.bbnew.txt','r').read().splitlines()
-
-# INDICATION
+#------------[ INDICATION ]---------------#
 id,id2,loop,ok,cp,akun,oprek,method,lisensiku,taplikasi,tokenku,uid,lisensikuni= [],[],0,0,0,[],[],[],[],[],[],[],[]
 cokbrut=[]
 pwpluss,pwnya=[],[]
-
-def cocok():
-	try:
-		cokbru=open('.cookie.txt').read()
-		cokbrut.append(cokbru)
-	except:
-		login_lagi334()
-# COLORS
+#------------[ WARNA-COLOR ]--------------#
+P = '\x1b[1;97m'
+M = '\x1b[1;91m'
+H = '\x1b[1;92m'
+K = '\x1b[1;93m'
+B = '\x1b[1;94m'
+U = '\x1b[1;95m' 
+O = '\x1b[1;96m'
+N = '\x1b[0m'    
+Z = "\033[1;30m"
+sir = '\033[41m\x1b[1;97m'
 x = '\33[m' # DEFAULT
+m = '\x1b[1;91m' #RED +
 k = '\033[93m' # KUNING +
 h = '\x1b[1;92m' # HIJAU +
 hh = '\033[32m' # HIJAU -
@@ -121,7 +143,8 @@ u = '\033[95m' # UNGU
 kk = '\033[33m' # KUNING -
 b = '\33[1;96m' # BIRU -
 p = '\x1b[0;34m' # BIRU +
-# Converter Bulan
+asu = random.choice([m,k,h,u,b])
+#--------------------[ CONVERTER-BULAN ]--------------#
 dic = {'1':'January','2':'February','3':'March','4':'April','5':'May','6':'June','7':'July','8':'August','9':'September','10':'October','11':'November','12':'December'}
 dic2 = {'01':'January','02':'February','03':'March','04':'April','05':'May','06':'June','07':'July','08':'August','09':'September','10':'October','11':'November','12':'Devember'}
 tgl = datetime.datetime.now().day
@@ -129,30 +152,23 @@ bln = dic[(str(datetime.datetime.now().month))]
 thn = datetime.datetime.now().year
 okc = 'OK-'+str(tgl)+'-'+str(bln)+'-'+str(thn)+'.txt'
 cpc = 'CP-'+str(tgl)+'-'+str(bln)+'-'+str(thn)+'.txt'
-# CLEAR
+#------------------[ MACHINE-SUPPORT ]---------------#
+def alvino_xy(u):
+        for e in u + "\n":sys.stdout.write(e);sys.stdout.flush();time.sleep(0.05)
 def clear():
 	os.system('clear')
-# BACK
 def back():
 	login()
-# BANNER
+#------------------[ LOGO-LAKNAT ]-----------------#
 def banner():
-	clear()
-	wel='# WELCOME TO FACEBOOK CRACK TOOL'
-	cik2=mark(wel ,style='cyan')
-	sol().print(cik2)
-	ban='''
-•   AUTHOR  : AOREC-XD WHATSAPP : 087872739899  •
-•   _____ _______  ____________________         •
-•   __  // /__   |/  /__  __ )__  ____/         •
-•   _  // /__  /|_/ /__  __  |_  /_             •
-•   /__  __/  /  / / _  /_/ /_  __/             •
-•     /_/  /_/  /_/  /_____/ /_/ VERSION 4.0.4  •
-•                                               •
-•   GITHUB : HTTPS://GITHUB.COM/AOREC-XD/4MBF   •'''
-	oi = nel(tekz(ban,justify='center',style='bold'), style='cyan')
-	cetak(nel(oi, title='[bold cyan] • DEVELOVER INFORMATION • [/bold cyan]'))
-# VALIDASI TOKEN
+	print(f'''\t{asu}
+  ___ _  _______ _    ____    ___ _____ ____
+|_ _| |/ /  ___/ \  |  _ \  |_ _|  ___/ ___|
+ | || ' /| |_ / _ \ | |_) |  | || |_ | |
+ | || . \|  _/ ___ \|  _ <   | ||  _|| |___
+|___|_|\_\_|/_/   \_\_| \_\ |___|_|   \____|
+    {m}{k}{h}{sir} AUTHOR : IKFAR IFC {x}{m}{k}{h}{x}''')
+#--------------------[ BAGIAN-MASUK ]--------------#
 def login():
 	try:
 		token = open('.token.txt','r').read()
@@ -193,12 +209,6 @@ def login_lagi334():
 		os.system("rm -f .cok.txt")
 		print(f'  %s[%sx%s]%s LOGIN GAGAL.....CEK TUMBAL LUU NGAB !!%s'%(x,k,x,m,x))
 		exit()
-
-
-
-#VALIDASI LISENSI
-
-
 # MENU
 def menu(my_name,my_id):
 	try:sh = requests.get('https://httpbin.org/ip').json()
