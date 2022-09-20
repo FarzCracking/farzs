@@ -550,33 +550,6 @@ def dump_pengikut():
 		teks2 = mark(teks, style='red')
 		sol().print(teks2)
 		exit()
-#DUMP LIKES
-def dump_likes():
-	try:
-		token = open('.token.txt','r').read()
-	except IOError:
-		exit()
-	win = '# DUMP ID FROM LIKE POST'
-	win2 = mark(win, style='green')
-	sol().print(win2)
-	pil = input(x+'['+p+'f'+x+'] INPUT ID POST : ')
-	try:
-		koh2 = requests.get('https://graph.facebook.com/v1.0/'+pil+'?fields=likes.limit(10000)&access_token='+tokenku[0],cookies={'cookie': cokbrut[0]}).json()
-		for pi in koh2['likes']['data']:
-			try:id.append(pi['id']+'|'+pi['name'])
-			except:continue
-		print(x+'['+h+'•'+x+'] TOTAL : '+str(len(id)))
-		setting()
-	except requests.exceptions.ConnectionError:
-		li = '# PROBLEM INTERNET CONNECTION, CHECK AND TRY AGAIN'
-		lo = mark(li, style='red')
-		sol().print(lo, style='cyan')
-		exit()
-	except (KeyError,IOError):
-		teks = '# POST IS NOT PUBLIC OR TOKEN BROKEN'
-		teks2 = mark(teks, style='red')
-		sol().print(teks2)
-		exit()
 
 #DUMPS GRUP
 def dump_grup():
