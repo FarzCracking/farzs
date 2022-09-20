@@ -226,7 +226,7 @@ def login_lagi334():
 			cik='# LOGIN SUCCESSFUL, RUN AGAIN '
 			cik2=mark(cik ,style='green')
 			sol().print(cik2)
-			exit()
+			menu()
 		except Exception as e: 
 			os.system("rm -f .token.txt")
 			cik='# EXPIRED COOKIE OR CHECKPOINT ACCOUNT '
