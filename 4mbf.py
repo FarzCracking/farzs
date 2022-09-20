@@ -226,31 +226,29 @@ def menu(my_name,my_id):
 	print(x+'['+h+'•'+x+'] ACTIVE USER : '+str(my_name))
 	print(x+'['+h+'•'+x+'] USER ID     : '+str(my_id))
 	print(x+'['+h+'•'+x+'] IP ADDRESS  : '+str(sh['origin']))
-	io = '''[bold cyan][01] Crack Publik	     [06] CRACK FROM FILES
-   [07] CHECK CHECKPOINT OPTIONS
-[03] FOLLOWER		     [08] CHECK CRACK RESULTS
-[04] LIKES THE POST	     [09] TIPS CRACK
-[05] GROUP MEMBERS           [00] LOGOUT[bold cyan]'''
+	io = '''[bold cyan][01] Crack Publik	     [05] CRACK FROM FILES
+                                     [06] Check Opsi CP
+[02] Crack Pengikut		     [07] Check Hasil Crack
+[03] Crack Like Post	             [08] Crack Tips
+[04] Crack Gruop                  [00] LOGOUT[bold cyan]'''
 	oi = nel(io, style='cyan')
 	cetak(nel(oi, title='[bold cyan] • MENU CRACK • [/bold cyan]'))
 	ec = input(x+'['+p+'<>'+x+'] Pilih : ')
 	if ec in ['1','01']:
-		dump_publik()
-	elif ec in ['2','02']:
 		dump_massal()
-	elif ec in ['3','03']:
+	elif ec in ['2','02']:
 		dump_pengikut()
-	elif ec in ['4','04']:
+	elif ec in ['3','03']:
 		dump_likes()
-	elif ec in ['5','05']:
+	elif ec in ['4','04']:
 		dump_grup()
-	elif ec in ['6','06']:
+	elif ec in ['5','05']:
 		crack_file()
-	elif ec in ['7','07']:
+	elif ec in ['6','06']:
 		file()
-	elif ec in ['8','08']:
+	elif ec in ['7','07']:
 		result()
-	elif ec in ['9','09']:
+	elif ec in ['8','08']:
 		tipsx()
 	elif ec in ['0','00']:
 		os.system('rm -rf .token.txt')
