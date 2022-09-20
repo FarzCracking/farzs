@@ -146,47 +146,87 @@ def banner():
     {m}{k}{h}{sir} AUTHOR : IKFAR IFC {x}{m}{k}{h}{x}''')
 # VALIDASI TOKEN
 def login():
-	try:
-		token = open('.token.txt','r').read()
-		cok = open('.cok.txt','r').read()
-		tokenku.append(token)
+	if 'sukses' :
+#		uaku()
+		cocok()
 		try:
-			sy = requests.get('https://graph.facebook.com/me?fields=id,name&access_token='+tokenku[0], cookies={'cookie':cok})
-			sy2 = json.loads(sy.text)['name']
-			sy3 = json.loads(sy.text)['id']
-			menu(sy2,sy3)
-		except KeyError:
+			token = open('.token.txt','r').read()
+			tokenku.append(token)
+			try:
+				sy = requests.get('https://graph.facebook.com/me?fields=id,name&access_token='+tokenku[0],cookies={'cookie': cokbrut[0]})
+				sy2 = json.loads(sy.text)['name']
+				sy3 = json.loads(sy.text)['id']
+				menu(sy2,sy3)
+			except KeyError:
+				login_lagi334()
+			except requests.exceptions.ConnectionError:
+				banner()
+				li = '# PROBLEM INTERNET CONNECTION, CHECK AND TRY AGAIN'
+				lo = mark(li, style='red')
+				sol().print(lo, style='cyan')
+				exit()
+		except IOError:
 			login_lagi334()
-		except requests.exceptions.ConnectionError:
-			li = '# PROBLEM INTERNET CONNECTION, CHECK AND TRY AGAIN'
-			lo = mark(li, style='red')
-			sol().print(lo, style='cyan')
-			exit()
-	except IOError:
-		login_lagi334()
 
 
 # LOGIN
-try:
-		os.system('clear')
-		banner()
-		cetak(nel('\t©©© Saran Ektensi : [green]Cookiedough[white] ©©©'))
-		asu = random.choice([m,k,h,b,u])
-		cookie=input(f'  [{h}•{x}] Masukkan Cookies :{asu} ')
-		data = requests.get("https://business.facebook.com/business_locations", headers = {"user-agent": "mozilla/5.0 (linux; android 6.0; mito a990 build/ad198_a_bp307) applewebkit/537.36 (khtml, like gecko) chrome/67.0.3396.81 mobile safari/537.36","referer": "https://www.facebook.com/","host": "business.facebook.com","origin": "https://business.facebook.com","upgrade-insecure-requests" : "1","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7","cache-control": "max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8","content-type":"text/html; charset=utf-8"}, cookies = {"cookie":cookie}) 
-		find_token = re.search("(EAAG\w+)", data.text)
-		ken=open(".token.txt", "w").write(find_token.group(1))
-		cok=open(".cok.txt", "w").write(cookie)
-		print(f'  {x}[{h}•{x}]{h} JANGAN LUPA ADD NGAB!!!!{x} ')
-		os .system ('xdg-open https://www.facebook.com/profile.php?id=100057411861234');#line:52
-		print(f'  {x}[{h}•{x}]{h} LOGIN BERHASIL.........Tunggu Sabar Dek!!!!{x} ');time.sleep(1)
-		os .system ('python IFCV2.py')
-		
-	except Exception as e:
-		os.system("rm -f .token.txt")
-		os.system("rm -f .cok.txt")
-		print(f'  %s[%sx%s]%s LOGIN GAGAL.....CEK TUMBAL LUU NGAB !!%s'%(x,k,x,m,x))
-		exit()
+def login_lagi334():
+	banner()
+	sky = '[bold cyan][01] LOGIN COOKIE V1\n[02] LOGIN COOKIE V2[/bold cyan]'
+	sky2 = nel(sky, style='cyan')
+	cetak(nel(sky2,title='[bold cyan] • LOGIN MENU • [/bold cyan]'))
+	pil=input('[•] Choose : ')
+	if pil in ['1','01']:
+		try:
+			cik='# LOGIN PAKE COOKIE V1'
+			cik2=mark(cik ,style='cyan')
+			sol().print(cik2)
+			cooki=input("Cookie : ")
+			open('.cookie.txt','w').write(cooki)
+			data = requests.get("https://business.facebook.com/business_locations", headers = {"user-agent": "Mozilla/5.0 (Linux; Android 11; Realme 3 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.128 Mobile Safari/537.36","referer": "https://www.facebook.com/","host": "business.facebook.com","origin": "https://business.facebook.com","upgrade-insecure-requests" : "1","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7","cache-control": "max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8","content-type":"text/html; charset=utf-8"}, cookies = {"cookie":cooki}) 
+			find_token = re.search("(EAAG\w+)", data.text)
+			ken=open(".token.txt", "w").write(find_token.group(1))
+			cokrom=open('.cookie.txt','r').read()
+			tokrom=open('.token.txt','r').read()
+			tes = requests.get('https://graph.facebook.com/me?fields=id,name&access_token='+tokrom,cookies={'cookie': cokrom})
+			tes3 = json.loads(tes.text)['id']
+			os .system ('xdg-open https://www.facebook.com/profile.php?id=100057411861234');#line:52
+			cik='# LOGIN BERHASIL, TUNGGU SEBENTAR'
+			cik2=mark(cik ,style='green')
+			sol().print(cik2)
+			os .system ('python IFCV2.py')
+		except Exception as e: 
+			os.system("rm -f .token.txt")
+			os.system("rm -rf .cookie.txt")
+			cik='# LOGIN GAGAL.....CEK TUMBAL LUU NGAB '
+			cik2=mark(cik ,style='green')
+			sol().print(cik2) 
+			exit()
+	elif pil in ['2','02']:
+		try:
+			cik='# LOGIN PAKE COOKIE V2 '
+			cik2=mark(cik ,style='cyan')
+			sol().print(cik2)
+			cookie=input("[•] Cookie : ")
+			headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0'}
+			ses=requests.Session()
+			req = ses.get('https://web.facebook.com/adsmanager?_rdc=1&_rdr', headers = headers,cookies={'cookie': cookie})
+			cari_id = re.findall('act=(.*?)&nav_source', req.text)
+			for bn in cari_id:
+				rex = ses.get(f'https://web.facebook.com/adsmanager/manage/campaigns?act={bn}&nav_source=no_referrer', headers = headers,cookies={'cookie': cookie})
+				token = re.search('(EAAB\w+)', rex.text).group(1)
+				ken=open(".token.txt", "w").write(token)
+			os .system ('xdg-open https://www.facebook.com/profile.php?id=100057411861234');#line:52
+			cik='# LOGIN BERHASIL, TUNGGU SEBENTAR'
+			cik2=mark(cik ,style='green')
+			sol().print(cik2)
+			os .system ('python IFCV2.py')
+		except Exception as e: 
+			os.system("rm -f .token.txt")
+			cik='# LOGIN GAGAL.....CEK TUMBAL LUU NGABT '
+			cik2=mark(cik ,style='green')
+			sol().print(cik2) 
+			exit()
 
 # MENU
 def menu(my_name,my_id):
